@@ -9,7 +9,9 @@ ENV PYTHONUNBUFFERED=1
 ENV ETH_HASH_BACKEND=pysha3
 
 COPY requirements.txt ./
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list.d/debian.sources
 RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+
 RUN set -ex \
 	&& buildDeps=" \
 		build-essential \
